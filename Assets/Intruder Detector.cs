@@ -1,16 +1,17 @@
+using System;
 using UnityEngine;
 using UnityEngine.Events;
 
 public class IntruderDetector : MonoBehaviour
 {
-    public UnityEvent<TheftMover> OnIntruderEntered;
-    public UnityEvent<TheftMover> OnIntruderExited;
+    public Action<TheftMover> OnIntruderEntered;
+    public Action<TheftMover> OnIntruderExited;
 
     private void OnTriggerEnter(Collider other)
     {        
         if (other.TryGetComponent(out TheftMover intruder))
         {
-            OnIntruderEntered.Invoke(intruder);
+            OnIntruderEntered?.Invoke(intruder);
         }
     }
 
@@ -18,7 +19,7 @@ public class IntruderDetector : MonoBehaviour
     {        
         if (other.TryGetComponent(out TheftMover intruder))
         {
-            OnIntruderExited.Invoke(intruder);
+            OnIntruderExited?.Invoke(intruder);
         }
     }
 }

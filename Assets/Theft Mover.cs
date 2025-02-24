@@ -18,7 +18,7 @@ public class TheftMover : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, _moveSpeed * Time.deltaTime);
 
-        if (Vector3.Distance(transform.position, target.position) < 0.1f)
+        if ((transform.position - target.position).sqrMagnitude < 0.1f * 0.1f)
         {
             _isMovingToHouse = !_isMovingToHouse;
         }
