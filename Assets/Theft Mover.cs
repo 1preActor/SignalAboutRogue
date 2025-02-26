@@ -1,5 +1,3 @@
-using System.Collections;
-using System.Collections.Generic;
 using UnityEngine;
 
 public class TheftMover : MonoBehaviour 
@@ -8,6 +6,7 @@ public class TheftMover : MonoBehaviour
     [SerializeField] private Transform _entryPoint;
     [SerializeField] private Transform _exitPoint;
 
+    private float _variable = 0.1f;
     private bool _isMovingToHouse = true;
 
     private void Update()
@@ -18,7 +17,7 @@ public class TheftMover : MonoBehaviour
 
         transform.position = Vector3.MoveTowards(transform.position, target.position, _moveSpeed * Time.deltaTime);
 
-        if ((transform.position - target.position).sqrMagnitude < 0.1f * 0.1f)
+        if ((transform.position - target.position).sqrMagnitude < _variable * _variable)
         {
             _isMovingToHouse = !_isMovingToHouse;
         }

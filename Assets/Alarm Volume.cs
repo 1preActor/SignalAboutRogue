@@ -11,7 +11,7 @@ public class AlarmVolume : MonoBehaviour
 
     private void Start()
     {
-        IntruderDetector detector = FindObjectOfType<IntruderDetector>();
+        IntruderDetector detector = GetComponent<IntruderDetector>();
         
         if (detector != null)
         {
